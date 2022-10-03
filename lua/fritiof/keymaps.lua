@@ -29,6 +29,7 @@ keymap("n", "å", "[",opts);
 keymap("n", "Å", "]",opts);
 
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>o", ":NvimTreeFocus<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)

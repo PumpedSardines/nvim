@@ -1,4 +1,4 @@
---- following options are the default
+-- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 vim.g.nvim_tree_icons = {
   default = "",
@@ -78,7 +78,7 @@ nvim_tree.setup {
     mappings = {
       custom_only = false,
       list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+        { key = { "h", "<CR>", "ö" }, cb = tree_cb "edit" },
         { key = "h", cb = tree_cb "close_node" },
         { key = "v", cb = tree_cb "vsplit" },
       },
