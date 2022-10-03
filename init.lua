@@ -7,7 +7,9 @@ require "fritiof.keymaps"
 require "fritiof.colorscheme"
 
 -- Plugins settings
-require "fritiof.cmp"
 require "fritiof.nvim-tree"
+require "fritiof.bufferline"
+require "fritiof.cmp"
 require "fritiof.feline"
 require "fritiof.colorizer"
+require "fritiof.null_ls"

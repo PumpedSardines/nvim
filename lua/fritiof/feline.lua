@@ -5,9 +5,7 @@ if not status_ok then return end
 
 
 feline.setup({
-
---  disable = { filetypes = {"^NvimTree$", "^dashboard$" }},
-
+  -- disable = { filetypes = {"^NvimTree$", "^dashboard$" }},
   custom_providers = {
     spacer = function (_, opts) 
       return "  "
@@ -33,21 +31,22 @@ feline.setup({
                 }
             end,
             left_sep = "block",
-            right_sep = {"block", 'slant_right' },
+            right_sep = {"block", 'slant_right', "  "},
             icon = ''
         },
-        { provider = "spacer" }, 
-        { provider= "git_branch", hl={fg="#deaef5" ,style="bold"} ,icon = " " },
-        { provider= "spacer" },
-        { provider= { name = "file_type", opts = { filetype_icon = true, case = "lowercase" } } },
-        { provider= "spacer" },
+        { provider= "git_branch", hl={fg="#deaef5" ,style="bold"} ,icon = " ",  right_sep="  "},
+        { provider= { name = "file_type", opts = { filetype_icon = true, case = "lowercase" } }, right_sep="   " },
         { provider = "git_diff_added", hl = { fg="#00aa88" }, icon = "   " },
         { provider = "git_diff_changed", hl = { fg="#ffcc00" }, icon = "  柳" },
-        { provider = "git_diff_removed", hl = { fg="#aa0000" }, icon = "   " },
+        { provider = "git_diff_removed", hl = { fg="#cc0000" }, icon = "   " },
         { provider= "spacer" },
+        { provider = "diagnostic_errors", hl = {fg="#cc0000"}, icon = "  " },
+        { provider = "diagnostic_warnings", hl = {fg="#f88f00"}, icon = "  " },
+        { provider = "diagnostic_info", hl = {fg="#fff"}, icon = "  " },
+        { provider = "diagnostic_hints", hl = {fg="#ffcc00"}, icon = "  " },
       },
       {
-        { provider= "analog_clock", hl= { bg="#8899ff" ,fg="white" }, right_sep = "block", left_sep = "block" },
+        { provider= "analog_clock", hl= { bg="#8899ff" ,fg="white" },  right_sep = "block", left_sep = "block" },
         { provider= "spacer" },
         { provider = "file_encoding" },
         { provider= "spacer" },

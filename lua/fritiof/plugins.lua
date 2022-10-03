@@ -54,6 +54,12 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
+  -- null_ls
+  use({
+      "jose-elias-alvarez/null-ls.nvim",
+      requires = { "nvim-lua/plenary.nvim" },
+  })
+
   -- Git highlighting
   use {
     'lewis6991/gitsigns.nvim',
@@ -61,6 +67,9 @@ return packer.startup(function(use)
       require('gitsigns').setup()
     end
   }
+
+  -- using packer.nvim
+  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
   -- Colorize hex
   use 'norcalli/nvim-colorizer.lua'
