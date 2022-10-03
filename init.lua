@@ -8,5 +8,6 @@ require "fritiof.colorscheme"
 
 -- Plugins settings
 require "fritiof.cmp"
-require "fritiof.feline"
 require "fritiof.nvim-tree"
+require "fritiof.feline"
+require "fritiof.colorizer"
