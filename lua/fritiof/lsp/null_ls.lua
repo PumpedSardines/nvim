@@ -1,8 +1,13 @@
+local os = require("os")
+
+-- without this prettierd will take some time first format
+-- since the daemon takes around 1 second to start
+os.execute("prettierd start")
+
 require("null-ls").setup({
 	sources = {
 		require("null-ls").builtins.formatting.stylua,
-		require("null-ls").builtins.formatting.prettier,
-		require("null-ls").builtins.diagnostics.eslint,
+		require("null-ls").builtins.formatting.prettierd,
 		require("null-ls").builtins.completion.spell,
 	},
 	on_attach = function(client, bufnr)
