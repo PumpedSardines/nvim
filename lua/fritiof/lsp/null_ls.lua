@@ -8,7 +8,7 @@ local b = require("null-ls").builtins
 
 require("null-ls").setup({
 	sources = {
-		b.formatting.phpcbf,
+		-- b.formatting.phpcbf,
 		b.formatting.phpcbf,
 		b.formatting.stylua,
 		b.formatting.prettierd,

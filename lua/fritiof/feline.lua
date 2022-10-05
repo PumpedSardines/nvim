@@ -1,65 +1,82 @@
 local status_ok, feline = pcall(require, "feline")
 
-if not status_ok then return end
-
-
+if not status_ok then
+	return
+end
 
 feline.setup({
-  -- disable = { filetypes = {"^NvimTree$", "^dashboard$" }},
-  custom_providers = {
-    spacer = function (_, opts) 
-      return "  "
-    end,
-    analog_clock = function ()
-      local os = require "os"
+	-- disable = { filetypes = {"^NvimTree$", "^dashboard$" }},
+	custom_providers = {
+		spacer = function(_, opts)
+			return "  "
+		end,
+		ssh = "SSH",
+		analog_clock = function()
+			local os = require("os")
 
-      local date = os.date("%H:%M")
+			local date = os.date("%H:%M")
 
-      return date
-    end
-  },
-  components = {
-    active = {
-      {
-        {
-            provider = 'vi_mode',
-            hl = function()
-                return {
-                    name = require('feline.providers.vi_mode').get_mode_highlight_name(),
-                    bg = require('feline.providers.vi_mode').get_mode_color(),
-                    --style = 'bold'
-                }
-            end,
-            left_sep = "block",
-            right_sep = {"block", 'slant_right', "  "},
-            icon = ''
-        },
-        { provider= "git_branch", hl={fg="#deaef5" ,style="bold"} ,icon = " ",  right_sep="  "},
-        { provider= { name = "file_type", opts = { filetype_icon = true, case = "lowercase" } }, right_sep="   " },
-        { provider = "git_diff_added", hl = { fg="#00aa88" }, icon = "   " },
-        { provider = "git_diff_changed", hl = { fg="#ffcc00" }, icon = "  柳" },
-        { provider = "git_diff_removed", hl = { fg="#cc0000" }, icon = "   " },
-        { provider= "spacer" },
-        { provider = "diagnostic_errors", hl = {fg="#cc0000"}, icon = "  " },
-        { provider = "diagnostic_warnings", hl = {fg="#f88f00"}, icon = "  " },
-        { provider = "diagnostic_info", hl = {fg="#fff"}, icon = "  " },
-        { provider = "diagnostic_hints", hl = {fg="#ffcc00"}, icon = "  " },
-      },
-      {
-        { provider= "analog_clock", hl= { bg="#8899ff" ,fg="white" },  right_sep = "block", left_sep = "block" },
-        { provider= "spacer" },
-        { provider = "file_encoding" },
-        { provider= "spacer" },
-        { provider = "position" },
-        { provider= "spacer" },
-        { provider = "line_percentage" },
-        { provider= "spacer" },
-        { provider = "scroll_bar" },
-        { provider= "spacer" },
-      }
-    }
-  }
-
+			return date
+		end,
+	},
+	components = {
+		active = {
+			{
+				{
+					provider = "vi_mode",
+					hl = function()
+						return {
+							name = require("feline.providers.vi_mode").get_mode_highlight_name(),
+							bg = require("feline.providers.vi_mode").get_mode_color(),
+							--style = 'bold'
+						}
+					end,
+					left_sep = "block",
+					right_sep = { "block", "slant_right", "  " },
+					icon = "",
+				},
+				{
+					provider = "ssh",
+					hl = { bg = "#0088FF", fg = "#fff" },
+					enabled = function()
+						return os.getenv("SSH_TTY") ~= nil
+					end,
+					right_sep = { "block", " " },
+					left_sep = { " ", "block" },
+				},
+				{ provider = "git_branch", hl = { fg = "#deaef5", style = "bold" }, icon = " ", right_sep = "  " },
+				{
+					provider = { name = "file_type", opts = { filetype_icon = true, case = "lowercase" } },
+					right_sep = "   ",
+				},
+				{ provider = "git_diff_added", hl = { fg = "#00aa88" }, icon = "   " },
+				{ provider = "git_diff_changed", hl = { fg = "#ffcc00" }, icon = "  柳" },
+				{ provider = "git_diff_removed", hl = { fg = "#cc0000" }, icon = "   " },
+				{ provider = "spacer" },
+				{ provider = "diagnostic_errors", hl = { fg = "#cc0000" }, icon = "  " },
+				{ provider = "diagnostic_warnings", hl = { fg = "#f88f00" }, icon = "  " },
+				{ provider = "diagnostic_info", hl = { fg = "#fff" }, icon = "  " },
+				{ provider = "diagnostic_hints", hl = { fg = "#ffcc00" }, icon = "  " },
+			},
+			{
+				{
+					provider = "analog_clock",
+					hl = { bg = "#8899ff", fg = "white" },
+					right_sep = "block",
+					left_sep = "block",
+				},
+				{ provider = "spacer" },
+				{ provider = "file_encoding" },
+				{ provider = "spacer" },
+				{ provider = "position" },
+				{ provider = "spacer" },
+				{ provider = "line_percentage" },
+				{ provider = "spacer" },
+				{ provider = "scroll_bar" },
+				{ provider = "spacer" },
+			},
+		},
+	},
 })
 
 

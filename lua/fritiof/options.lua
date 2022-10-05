@@ -44,7 +44,8 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.cmd("language en_US")
+pcall(vim.cmd, "language en_US")
+
 vim.cmd("set relativenumber")
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
