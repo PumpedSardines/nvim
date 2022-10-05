@@ -30,6 +30,8 @@ keymap("n", "Å", "}", opts)
 
 keymap("n", "Ä", "^", opts)
 keymap("n", "ä", "$", opts)
+keymap("v", "Ä", "^", opts)
+keymap("v", "ä", "$", opts)
 
 --keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 --keymap("n", "<leader>o", ":NvimTreeFocus<cr>", opts)

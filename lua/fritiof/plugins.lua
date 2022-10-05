@@ -66,6 +66,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
 
+	-- Test
 	use("famiu/bufdelete.nvim")
 
 	-- Treesitter
@@ -102,14 +103,26 @@ return packer.startup(function(use)
 	})
 
 	-- indent lines
-	use("Yggdroot/indentLine")
+	use("lukas-reineke/indent-blankline.nvim")
 
 	use({
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 
+	-- lightbulb
+	use({
+		"kosayoda/nvim-lightbulb",
+		requires = "antoinemadec/FixCursorHold.nvim",
+	})
+
 	use("stevearc/dressing.nvim")
+
+	-- greeting page
+	use({
+		"goolord/alpha-nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
+	})
 
 	use("alvan/vim-closetag")
 	use("windwp/nvim-ts-autotag")

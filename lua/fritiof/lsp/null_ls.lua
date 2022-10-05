@@ -4,11 +4,18 @@ local os = require("os")
 -- since the daemon takes around 1 second to start
 os.execute("prettierd start")
 
+local b = require("null-ls").builtins
+
 require("null-ls").setup({
 	sources = {
-		require("null-ls").builtins.formatting.stylua,
-		require("null-ls").builtins.formatting.prettierd,
-		require("null-ls").builtins.completion.spell,
+		b.formatting.phpcbf,
+		b.formatting.phpcbf,
+		b.formatting.stylua,
+		b.formatting.prettierd,
+		b.completion.spell,
+		b.code_actions.eslint_d,
+		b.diagnostics.eslint_d,
+		b.formatting.rustfmt,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
