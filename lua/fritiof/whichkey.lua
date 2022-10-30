@@ -98,7 +98,7 @@ local mappings = {
 		"Find files",
 	},
 	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-	--	["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
+	--[[ ["P"] = { "<cmd>Telescope projects<cr>", "Projects" }, ]]
 
 	p = {
 		name = "Packer",
@@ -123,9 +123,9 @@ local mappings = {
 			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
 			"undo stage hunk",
 		},
-		o = { "<cmd>telescope git_status<cr>", "open changed file" },
-		b = { "<cmd>telescope git_branches<cr>", "checkout branch" },
-		c = { "<cmd>telescope git_commits<cr>", "checkout commit" },
+		o = { "<cmd>Telescope git_status<cr>", "open changed file" },
+		b = { "<cmd>Telescope git_branches<cr>", "checkout branch" },
+		c = { "<cmd>Telescope git_commits<cr>", "checkout commit" },
 		d = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Diff",
@@ -176,7 +176,7 @@ local mappings = {
 
 	--[[ s = { ]]
 	--[[ 	name = "Search", ]]
-	--[[ 	b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" }, ]]
+	--[[ b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" }, ]]
 	--[[ 	c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" }, ]]
 	--[[ 	h = { "<cmd>Telescope help_tags<cr>", "Find Help" }, ]]
 	--[[ 	M = { "<cmd>Telescope man_pages<cr>", "Man Pages" }, ]]
@@ -188,7 +188,7 @@ local mappings = {
 
 	t = {
 		name = "Terminal",
-		--[[ n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" }, ]]
+		n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
 		--[[ u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" }, ]]
 		--[[ t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" }, ]]
 		--[[ p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" }, ]]
