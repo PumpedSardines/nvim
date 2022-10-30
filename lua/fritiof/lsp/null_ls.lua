@@ -7,14 +7,16 @@ os.execute("prettierd start")
 local b = require("null-ls").builtins
 
 require("null-ls").setup({
+	fallback_severity = vim.diagnostic.severity.HINT,
 	sources = {
-		-- b.formatting.phpcbf,
+		b.diagnostics.cspell,
+		b.code_actions.cspell,
 		b.formatting.phpcbf,
 		b.formatting.stylua,
 		b.formatting.prettierd,
-		b.completion.spell,
 		b.code_actions.eslint_d,
 		b.diagnostics.eslint_d,
+		b.formatting.eslint_d,
 		b.formatting.rustfmt,
 	},
 	on_attach = function(client, bufnr)

@@ -1,12 +1,16 @@
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
+
+-- Remove some keybindings that are used elsewhere
+keymap("", "<S-m>", "<Nop>", opts) -- Move to middle of screen
+keymap("", "<C-m>", "<Nop>", opts)
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -24,14 +28,26 @@ keymap("n", "<C-j>", "<C-w>h", opts)
 keymap("n", "<C-k>", "<C-w>j", opts)
 keymap("n", "<C-l>", "<C-w>k", opts)
 keymap("n", "<C-ö>", "<C-w>l", opts)
+keymap("n", "<C-\\>", "<C-w>l", opts)
 
-keymap("n", "å", "{", opts)
-keymap("n", "Å", "}", opts)
+keymap("n", "K", "20j", opts)
+keymap("n", "L", "20k", opts)
 
-keymap("n", "Ä", "^", opts)
-keymap("n", "ä", "$", opts)
-keymap("v", "Ä", "^", opts)
-keymap("v", "ä", "$", opts)
+keymap("n", "o", "o<Esc>", opts)
+keymap("n", "O", "O<Esc>", opts)
+
+keymap("n", "Å", "{", opts)
+keymap("n", "å", "}", opts)
+
+keymap("n", "cä", "c^", opts)
+keymap("n", "cÄ", "c$", opts)
+keymap("n", "dä", "d^", opts)
+keymap("n", "dÄ", "d$", opts)
+
+keymap("n", "ä", "^", opts)
+keymap("n", "Ä", "$", opts)
+keymap("v", "ä", "^", opts)
+keymap("v", "Ä", "$", opts)
 
 --keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 --keymap("n", "<leader>o", ":NvimTreeFocus<cr>", opts)
@@ -52,10 +68,10 @@ keymap("n", "<S-j>", ":bprevious<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+keymap("i", "jj", "<ESC>", opts)
 
 -- Visual --
--- Stay in indent mode
+--Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 

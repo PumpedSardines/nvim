@@ -1,0 +1,55 @@
+snippet rh react hook 
+	function use${1}() {
+		${0}	
+	}
+
+
+# Random helpers
+snippet ed export default ...
+	export default ${1};
+
+snippet f function
+	function ${1:name}(${2})${3:: void} {
+		${0}
+	}
+
+snippet if if statment
+	if (${1}) {
+		${0}
+	}
+
+snippet else else statment
+	else {
+		${0}
+	}
+
+snippet fli for loop with index 
+	for (let ${1:i} = 0; $1 < ${2:arr.length}; ${3:$1++}) {
+		${0}
+	}
+
+snippet fl for loop 
+	for (const ${1:item} of ${2:generator}) {
+		${0}
+	}
+
+snippet fla for await loop
+	for await (const ${1:item} of ${2:generator}) {
+		${0}
+	}
+
+snippet af anonymous function 
+	(${1})${2:: void} => {
+		${0}
+	}
+
+snippet iffe IFFE
+	(() => {
+		${0}
+	})()
+
+snippet aiffe async IFFE
+	(async () => {
+		${0}
+	})()
+
