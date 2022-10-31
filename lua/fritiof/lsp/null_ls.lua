@@ -3,6 +3,7 @@ local os = require("os")
 -- without this prettierd will take some time first format
 -- since the daemon takes around 1 second to start
 os.execute("prettierd start")
+os.execute("eslint_d start")
 
 local b = require("null-ls").builtins
 
