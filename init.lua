@@ -359,6 +359,8 @@ local config = {
       window = {
         mappings = {
           ["v"] = "open_vsplit",
+          ["H"] = "toggle_hidden",
+          ["L"] = false,
         },
       },
     },
