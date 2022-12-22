@@ -400,8 +400,8 @@ local config = {
   luasnip = {
     -- Extend filetypes
     filetype_extend = {
-      javascript = { "javascriptreact" },
-      typescript = { "typescriptreact" },
+      javascriptreact = { "javascript" },
+      typescriptreact = { "typescript" },
     },
     -- Configure luasnip loaders (vscode, lua, and/or snipmate)
     snipmate = {
