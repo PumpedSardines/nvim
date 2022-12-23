@@ -57,6 +57,7 @@ local config = {
       diagnostics_enabled = true, -- enable diagnostics at start
       status_diagnostics_enabled = true, -- enable diagnostics in statusline
       icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
+      heirline_bufferline = true, -- enable new heirline based bufferline (requires :PackerSync after changing)
     },
   },
   -- If you need more control, you can use the function()...end notation
@@ -180,6 +181,7 @@ local config = {
         },
       }
 
+      ---@diagnostic disable-next-line: empty-block
       if server == "curlylint" then
       end
 
@@ -299,6 +301,10 @@ local config = {
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
       { "github/copilot.vim" },
+      -- {
+      --         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      --         config = function() require("lsp_lines").setup() end,
+      -- },
 
       -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
@@ -333,7 +339,6 @@ local config = {
         -- Set a formatter
         null_ls.builtins.diagnostics.cspell,
         null_ls.builtins.code_actions.cspell,
-        null_ls.builtins.formatting.phpcbf,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettierd,
@@ -344,8 +349,8 @@ local config = {
       }
       return config -- return final config table
     end,
-    treesitter = { -- overrides `require("treesitter").setup(...)`
-      -- ensure_installed = { "lua" },
+    treesitter = {
+      ensure_installed = { "lua", "typescript", "javascript", "tsx", "rust" },
     },
     -- use mason-lspconfig to configure LSP installations
     ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
@@ -353,9 +358,9 @@ local config = {
     },
     -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
     ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
-      ensure_installed = { "prettierd", "eslint_d", "stylua", "cspell" },
+      ensure_installed = { "prettierd", "eslint_d", "stylua", "cspell", "rustfmt", "black" },
     },
-    symbols_outline = {},
+    ["mason-nvim-dap"] = {},
     ["neo-tree"] = {
       source_selector = {
         winbar = false,
@@ -448,31 +453,14 @@ local config = {
       },
     },
   },
-
-  -- This function is run last and is a good place to configuring
-  -- augroups/autocommands and custom filetypes also this just pure lua so
-  -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
-    vim.cmd [[set iskeyword+=-]]
-    vim.cmd [[set iskeyword+=$]]
+    vim.cmd "set iskeyword+=-"
+    vim.cmd "set iskeyword+=$"
 
     vim.cmd [[let g:copilot_no_tab_map = v:true]]
 
     local copilot_options = { silent = true, expr = true, script = true }
     vim.api.nvim_set_keymap("i", "<C-cr>", "copilot#Accept(<Tab>)", copilot_options)
-
-    -- Set up custom filetypes
-    -- vim.filetype.add {
-    --   extension = {
-    --     foo = "fooscript",
-    --   },
-    --   filename = {
-    --     ["Foofile"] = "fooscript",
-    --   },
-    --   pattern = {
-    --     ["~/%.config/foo/.*"] = "fooscript",
-    --   },
-    -- }
   end,
 }
 
