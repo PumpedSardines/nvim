@@ -1,5 +1,5 @@
 --              AstroNvim Configuration Table
--- All configuration changes should go inside of the table below
+-- All configuration changes should go inside of the table
 
 -- You can think of a Lua "table" as a dictionary like data structure the
 -- normal format is "key = value". These also handle array like data structures
@@ -7,57 +7,68 @@
 local config = {
   -- Configure AstroNvim updates
   updater = {
-    remote = "origin", -- remote to use
-    channel = "stable", -- "stable" or "nightly"
-    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "main", -- branch name (NIGHTLY ONLY)
-    commit = nil, -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false, -- skip prompts about breaking changes
+    remote = "origin",     -- remote to use
+    channel = "stable",    -- "stable" or "nightly"
+    version = "latest",    -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    branch = "main",       -- branch name (NIGHTLY ONLY)
+    commit = nil,          -- commit hash (NIGHTLY ONLY)
+    pin_plugins = nil,     -- nil, true, false (nil will pin plugins on stable only)
+    skip_prompts = false,  -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
-    auto_reload = false, -- automatically reload and sync packer after a successful update
-    auto_quit = false, -- automatically quit the current session after a successful update
+    auto_reload = false,   -- automatically reload and sync packer after a successful update
+    auto_quit = false,     -- automatically quit the current session after a successful update
     -- remotes = { -- easily add new remotes to track
     --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
     --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
     --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
     -- },
   },
-
   -- Set colorscheme to use
-  colorscheme = "default_theme",
-
+  colorscheme = "terafox",
   -- Add highlight groups in any theme
   highlights = {
     init = function(scheme)
       local C = require "default_theme.colors"
 
-      scheme["IndentBlanklineContextStart"] = { fg = C.blue, underline = true }
-      scheme["IndentBlanklineContextChar"] = { fg = C.blue, nocombine = true }
+      -- scheme["DiagnosticsErrorFloat"] = { fg = C.blue, underline = true }
+      -- scheme["HintFloat"] = { fg = C.blue, underline = true }
+      -- scheme["InfoFloat"] = { fg = C.blue, underline = true }
+      -- scheme["WarnFloat"] = { fg = C.blue, underline = true }
+
+      -- scheme["IndentBlanklineContextStart"] = { fg = C.blue, underline = true }
+      -- scheme["IndentBlanklineContextChar"] = { fg = C.blue, nocombine = true }
+      -- scheme["IndentBlanklineContextStart"] = { fg = C.blue, underline = true }
+      -- scheme["IndentBlanklineContextChar"] = { fg = C.blue, nocombine = true }
 
       return scheme
     end,
   },
-
   -- set vim options here (vim.<first_key>.<second_key> = value)
   options = {
     opt = {
       relativenumber = true, -- sets vim.opt.relativenumber
-      number = true, -- sets vim.opt.number
-      spell = false, -- sets vim.opt.spell
-      signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-      wrap = true, -- sets vim.opt.wrap
+      number = true,         -- sets vim.opt.number
+      spell = false,         -- sets vim.opt.spell
+      signcolumn = "auto",   -- sets vim.opt.signcolumn to auto
+      wrap = true,           -- sets vim.opt.wrap
+      -- Everforest color theme light
+      background = "dark",
     },
     g = {
+      -- everforest plugin
+      everforest_diagnostic_virtual_text = "colored",
+      everforest_background = "soft",
+      -- copilot plugin
       copilot_no_tab_map = true,
-      mapleader = " ", -- sets vim.g.mapleader
-      autoformat_enabled = true, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
-      cmp_enabled = true, -- enable completion at start
-      autopairs_enabled = true, -- enable autopairs at start
-      diagnostics_enabled = true, -- enable diagnostics at start
+      -- random plugins
+      mapleader = " ",                   -- sets vim.g.mapleader
+      autoformat_enabled = true,         -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
+      cmp_enabled = true,                -- enable completion at start
+      autopairs_enabled = true,          -- enable autopairs at start
+      diagnostics_enabled = true,        -- enable diagnostics at start
       status_diagnostics_enabled = true, -- enable diagnostics in statusline
-      icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
-      heirline_bufferline = true, -- enable new heirline based bufferline (requires :PackerSync after changing)
+      icons_enabled = true,              -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
+      heirline_bufferline = true,        -- enable new heirline based bufferline (requires :PackerSync after changing)
     },
   },
   -- If you need more control, you can use the function()...end notation
@@ -72,19 +83,23 @@ local config = {
 
   -- Set dashboard header
   header = {
-    " █████  ███████ ████████ ██████   ██████",
-    "██   ██ ██         ██    ██   ██ ██    ██",
-    "███████ ███████    ██    ██████  ██    ██",
-    "██   ██      ██    ██    ██   ██ ██    ██",
-    "██   ██ ███████    ██    ██   ██  ██████",
-    " ",
-    "    ███    ██ ██    ██ ██ ███    ███",
-    "    ████   ██ ██    ██ ██ ████  ████",
-    "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-    "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-    "    ██   ████   ████   ██ ██      ██",
+    " _  ___   _____ __  __ ",
+    "| \\| \\ \\ / /_ _|  \\/  |",
+    "| .` |\\ V / | || |\\/| |",
+    "|_|\\_| \\_/ |___|_|  |_|",
+    --
+    -- " █████  ███████ ████████ ██████   ██████",
+    -- "██   ██ ██         ██    ██   ██ ██    ██",
+    -- "███████ ███████    ██    ██████  ██    ██",
+    -- "██   ██      ██    ██    ██   ██ ██    ██",
+    -- "██   ██ ███████    ██    ██   ██  ██████",
+    -- " ",
+    -- "███    ██ ██    ██ ██ ███    ███",
+    -- "████   ██ ██    ██ ██ ████  ████",
+    -- "██ ██  ██ ██    ██ ██ ██ ████ ██",
+    -- "██  ██ ██  ██  ██  ██ ██  ██  ██",
+    -- "██   ████   ████   ██ ██      ██",
   },
-
   -- Default theme configuration
   default_theme = {
     -- Modify the color palette for the default theme
@@ -95,7 +110,7 @@ local config = {
     highlights = function(hl) -- or a function that returns a new table of colors to set
       local C = require "default_theme.colors"
 
-      hl.Normal = { fg = C.fg, bg = C.bg }
+      -- hl.Normal = { fg = C.fg, bg = C.bg }
 
       -- New approach instead of diagnostic_style
       hl.DiagnosticError.italic = true
@@ -128,13 +143,11 @@ local config = {
       ["which-key"] = true,
     },
   },
-
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
     virtual_text = true,
     underline = true,
   },
-
   -- Extend LSP configuration
   lsp = {
     -- enable servers that you already have installed without mason
@@ -144,7 +157,7 @@ local config = {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = true,     -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -216,20 +229,20 @@ local config = {
           return vim.lsp.handlers["textDocument/definition"](err, result, method, ...)
         end
 
-        opts.root_dir = utils.root_pattern "package.json"
+        opts.root_dir = utils.root_pattern("package.json", "tsconfig.json")
         require("lspconfig")[server].setup(opts)
         return
       end
 
       if server == "denols" then
-        opts.root_dir = utils.root_pattern "deno.json"
+        opts.root_dir = utils.root_pattern("deno.json", "import_map.json")
+        opts["single_file_support"] = false
         require("lspconfig")[server].setup(opts)
         return
       end
 
       require("lspconfig")[server].setup(opts)
     end,
-
     -- Add overrides for LSP server settings, the keys are the name of the server
     ["server-settings"] = {
       -- example for addings schemas to yamlls
@@ -246,7 +259,6 @@ local config = {
       -- },
     },
   },
-
   -- Mapping data with "desc" stored directly by vim.keymap.set().
   --
   -- Please use this mappings table to set keyboard mapping since this is the
@@ -255,75 +267,41 @@ local config = {
   mappings = {
     -- first key is the mode
     n = {
-
       ["o"] = { "o<Esc>", desc = "New line without insert" },
       ["O"] = { "O<Esc>", desc = "New line without insert" },
-
-      ["Å"] = { "{", desc = "" },
-      ["å"] = { "}", desc = "" },
-
-      ["cä"] = { "c^", desc = "" },
-      ["cÄ"] = { "c$", desc = "" },
-      ["dä"] = { "d^", desc = "" },
-      ["dÄ"] = { "d$", desc = "" },
-
-      ["ä"] = { "^", desc = "" },
-      ["Ä"] = { "$", desc = "" },
-      ["ö"] = { ":", desc = "" },
-
       ["<leader>v"] = { "<cmd>vsplit<cr>", desc = "Split vertical" },
-
       -- second key is the lefthand side of the map
       -- mappings seen under group name "Buffer"
-      ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-      ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
-      ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
-      ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-      ["<leader>jt"] = { "", desc = "Toggle Copilot" },
+      -- ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+      -- ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
+      -- ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
+      -- ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
 
       -- turn off annoying keybindings
       ["|"] = false,
       ["\\"] = false,
     },
-    v = {
-      ["ä"] = { "^", desc = "" },
-      ["Ä"] = { "$", desc = "" },
-    },
-    t = {
-      -- setting a mapping to false will disable it
-      -- ["<esc>"] = false,
-    },
   },
-
   -- Configure plugins
   plugins = {
     init = {
-      -- You can disable default plugins as follows:
-      -- ["goolord/alpha-nvim"] = { disable = true },
-      { "github/copilot.vim" },
-      -- {
-      --         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-      --         config = function() require("lsp_lines").setup() end,
-      -- },
-
-      -- You can also add new plugins here as well:
-      -- Add plugins, the packer syntax without the "use"
-      -- { "andweeb/presence.nvim" },
-      -- {
-      --   "ray-x/lsp_signature.nvim",
-      --   event = "BufRead",
-      --   config = function()
-      --     require("lsp_signature").setup()
-      --   end,
-      -- },
-
-      -- We also support a key value style plugin definition similar to NvChad:
-      -- ["ray-x/lsp_signature.nvim"] = {
-      --   event = "BufRead",
-      --   config = function()
-      --     require("lsp_signature").setup()
-      --   end,
-      -- },
+      -- Disable astronvim plugins
+      ["max397574/better-escape.nvim"] = { disable = true }, -- disabled jk binding for esc
+      ["stevearc/aerial.nvim"] = { disable = true },         -- Disables symbol outline, becuase this plugin is janky as hell
+      ["mfussenegger/nvim-dap"] = { disabled = true },       -- Disables the debugger, becuase it's hard too use and really buggy compared to IDE's with built in debuggers
+      --
+      -- My personal plugins
+      { "prisma/vim-prisma" },          -- Color theme for prisma
+      { "gpanders/editorconfig.nvim" }, -- Parse .editorconfig files
+      { "rhaiscript/vim-rhai" },        -- Color theme for rhai
+      --
+      -- Color themes
+      { "morhetz/gruvbox" },
+      { "sainnhe/everforest" },
+      { "EdenEast/nightfox.nvim" },
+      --
+      -- Custom plugins
+      { "~/.config/nvim/lua/user/plugins/lorem-ipsum" }, -- Enables the LoremIpsum command
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
@@ -334,27 +312,49 @@ local config = {
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 
-      config.fallback_severity = vim.diagnostic.severity.INFO
       config.sources = {
         -- Set a formatter
-        null_ls.builtins.diagnostics.cspell,
-        null_ls.builtins.code_actions.cspell,
+        null_ls.builtins.diagnostics.cspell.with {
+          diagnostics_postprocess = function(diagnostic) diagnostic.severity = vim.diagnostic.severity.INFO end,
+          diagnostic_config = {
+            underline = true,
+            virtual_text = false,
+            signs = true,
+            update_in_insert = false,
+            severity_sort = true,
+          },
+        },
+        null_ls.builtins.code_actions.cspell.with {
+          config = {
+            create_config_file = true,
+            create_config_file_name = ".cspell.json",
+          },
+        },
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.code_actions.eslint_d,
-        null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.diagnostics.eslint_d.with {
+          filter = function(diagnostic)
+            local possible_useless = {
+              diagnostic.code == "prettier/prettier",
+              not not diagnostic.message:find "Error: No ESLint configuration found",
+            }
+
+            return not vim.tbl_contains(possible_useless, true)
+          end,
+        },
         null_ls.builtins.formatting.eslint_d,
         null_ls.builtins.formatting.rustfmt,
       }
       return config -- return final config table
     end,
     treesitter = {
-      ensure_installed = { "lua", "typescript", "javascript", "tsx", "rust" },
+      ensure_installed = { "vim", "lua", "typescript", "javascript", "tsx", "rust" },
     },
     -- use mason-lspconfig to configure LSP installations
     ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
-      ensure_installed = { "sumneko_lua", "tsserver" },
+      ensure_installed = { "sumneko_lua", "tsserver", "denols" },
     },
     -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
     ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
@@ -396,6 +396,12 @@ local config = {
         end
       end, { "i", "s" })
 
+      opts["enabled"] = function() return vim.fn.reg_recording() == "" end
+
+      -- i don't think cmp border looks good
+      opts["window"]["documentation"] = nil
+      opts["window"]["completion"] = nil
+
       -- return the new table to be used
       return opts
     end,
@@ -405,7 +411,6 @@ local config = {
       },
     },
   },
-
   -- LuaSnip Options
   luasnip = {
     -- Extend filetypes
@@ -421,7 +426,6 @@ local config = {
       },
     },
   },
-
   -- CMP Source Priorities
   -- modify here the priorities of default cmp sources
   -- higher value == higher priority
@@ -436,7 +440,6 @@ local config = {
       path = 250,
     },
   },
-
   -- Modify which-key registration (Use this with mappings table in the above.)
   ["which-key"] = {
     -- Add bindings which show up as group name
@@ -447,20 +450,34 @@ local config = {
         ["<leader>"] = {
           -- third key is the key to bring up next level and its displayed
           -- group name in which-key top level menu
-          ["b"] = { name = "Buffer" },
-          ["j"] = { name = "Copilot" },
+          ["b"] = nil,
+          ["D"] = nil,
         },
       },
     },
   },
   polish = function()
-    vim.cmd "set iskeyword+=-"
+    -- vim.api.nvim_create_autocmd("RecordingEnter", {
+    --   command = "Copilot disable",
+    -- })
+    -- vim.api.nvim_create_autocmd("RecordingLeave", {
+    --   command = "Copilot enable",
+    -- })
+
+    -- vim.api.nvim_create_autocmd("VimEnter,BufNewFile,BufReadPost", { command = "call HardMode()" })
+
     vim.cmd "set iskeyword+=$"
+    vim.cmd "set iskeyword+=-"
 
-    vim.cmd [[let g:copilot_no_tab_map = v:true]]
+    -- vim.cmd [[let g:copilot_no_tab_map = v:true]]
+    -- local copilot_options = { silent = true, expr = true, script = true }
+    -- vim.api.nvim_set_keymap("i", "<C-f>", "copilot#Accept(<Tab>)", copilot_options)
 
-    local copilot_options = { silent = true, expr = true, script = true }
-    vim.api.nvim_set_keymap("i", "<C-cr>", "copilot#Accept(<Tab>)", copilot_options)
+    vim.cmd [[set foldlevel=99]]
+    vim.cmd [[set foldmethod=expr]]
+    vim.cmd [[set foldexpr=nvim_treesitter#foldexpr()]]
+
+    -- vim.cmd [[command! -nargs=? LoremIpsum lua write_under_line(lorem_ipsum(<args>))]]
   end,
 }
 
